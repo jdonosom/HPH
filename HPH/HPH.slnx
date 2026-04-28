@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="../BusinessHPH/HPHBusiness.csproj" />
+  <Project Path="../HPHDataLayer/HPHDataLayer.csproj" />
+  <Project Path="HPH.csproj" />
+</Solution>
