@@ -11,5 +11,8 @@ public class Empleado
     public string Dv { get; set; } = string.Empty;
     public string NombreCompleto { get; set; } = string.Empty;
     public string Cargo { get; set; } = string.Empty;
-    public int CodigoCargo { get; set; } 
+    public int CodigoCargo { get; set; }
+
+    // Propiedad calculada para mostrar RUT completo
+    public string RutCompleto => $"{Rut:N0}-{Dv}".Replace(",", ".");
 }

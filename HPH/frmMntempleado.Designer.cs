@@ -171,6 +171,7 @@
             btnHelp.TabIndex = 2;
             btnHelp.Text = "?";
             btnHelp.UseVisualStyleBackColor = true;
+            btnHelp.Click += btnHelp_Click;
             // 
             // frmMntEmpleado
             // 

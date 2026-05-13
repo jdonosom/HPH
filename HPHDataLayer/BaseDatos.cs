@@ -137,7 +137,9 @@ public class BaseDatos
         {
             if (this.conexion == null)
             {
-                this.conexion = factory.CreateConnection();
+                this.conexion = factory?.CreateConnection();
+                if (this.conexion == null)
+                    throw new BaseDatosException("No se pudo crear la conexión. Verifique la configuración del proveedor.");
 
                 this.conexion.ConnectionString = cadenaConexion;
             }
@@ -217,8 +219,10 @@ public class BaseDatos
     /// <param name="nombre">El nombre del parámetro cuyo valor será nulo.</param>
     public void AsignarParametroNulo(string nombre)
     {
-        DbParameter param = comando.CreateParameter(); ;
-        param.DbType = System.Data.DbType.Object;
+        if (comando == null)
+            throw new BaseDatosException("No se ha creado un comando. Llame a CrearComando() primero.");
+
+        DbParameter param = comando.CreateParameter();
         param.Direction = ParameterDirection.Input;
         param.ParameterName = nombre;
         param.Value = DBNull.Value;
@@ -229,12 +233,34 @@ public class BaseDatos
     }
 
     /// <summary>
+    /// Setea un parámetro como nulo del comando creado con un tipo específico.
+    /// </summary>
+    /// <param name="nombre">El nombre del parámetro cuyo valor será nulo.</param>
+    /// <param name="tipo">El tipo de dato del parámetro.</param>
+    public void AsignarParametroNulo(string nombre, System.Data.DbType tipo)
+    {
+        if (comando == null)
+            throw new BaseDatosException("No se ha creado un comando. Llame a CrearComando() primero.");
+
+        DbParameter param = comando.CreateParameter();
+        param.DbType = tipo;
+        param.Direction = ParameterDirection.Input;
+        param.ParameterName = nombre;
+        param.Value = DBNull.Value;
+
+        comando.Parameters.Add(param);
+    }
+
+    /// <summary>
     /// Asigna un parámetro de tipo cadena al comando creado.
     /// </summary>
     /// <param name="nombre">El nombre del parámetro.</param>
     /// <param name="valor">El valor del parámetro.</param>
     public void AsignarParametroCadena(string nombre, string valor)
     {
+        if (comando == null)
+            throw new BaseDatosException("No se ha creado un comando. Llame a CrearComando() primero.");
+
         DbParameter param = comando.CreateParameter();
         param.DbType = System.Data.DbType.String;
         param.Direction = ParameterDirection.Input;
@@ -272,7 +298,10 @@ public class BaseDatos
     /// <param name="valor">El valor del parámetro.</param>
     public void AsignarParametroEntero(string nombre, int valor)
     {
-        DbParameter param = comando.CreateParameter(); ;
+        if (comando == null)
+            throw new BaseDatosException("No se ha creado un comando. Llame a CrearComando() primero.");
+
+        DbParameter param = comando.CreateParameter();
         param.DbType = System.Data.DbType.Int32;
         param.Direction = ParameterDirection.Input;
         param.ParameterName = nombre;

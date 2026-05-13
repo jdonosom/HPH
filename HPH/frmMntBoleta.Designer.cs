@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMntBoleta));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             btnHelp = new Button();
             cmbCargo = new ComboBox();
             txtNombre = new TextBox();
@@ -40,6 +44,7 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             dataGridView1 = new DataGridView();
+            label5 = new Label();
             colId = new DataGridViewTextBoxColumn();
             colDependencia = new DataGridViewComboBoxColumn();
             colTipoContrato = new DataGridViewComboBoxColumn();
@@ -52,7 +57,6 @@
             colPeriodo = new DataGridViewTextBoxColumn();
             colDecreto = new DataGridViewTextBoxColumn();
             colJornada = new DataGridViewTextBoxColumn();
-            label5 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -66,6 +70,7 @@
             btnHelp.TabIndex = 9;
             btnHelp.Text = "?";
             btnHelp.UseVisualStyleBackColor = true;
+            btnHelp.Click += btnHelp_Click;
             // 
             // cmbCargo
             // 
@@ -137,9 +142,9 @@
             label1.Font = new Font("Segoe UI Variable Display", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(60, 16);
             label1.Name = "label1";
-            label1.Size = new Size(236, 26);
+            label1.Size = new Size(206, 26);
             label1.TabIndex = 1;
-            label1.Text = "Mantenedor de empleados";
+            label1.Text = "Mantenedor de boletas";
             // 
             // pictureBox1
             // 
@@ -162,6 +167,16 @@
             dataGridView1.Size = new Size(1272, 315);
             dataGridView1.TabIndex = 14;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Variable Text Semibold", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(18, 130);
+            label5.Name = "label5";
+            label5.Size = new Size(78, 19);
+            label5.TabIndex = 15;
+            label5.Text = "Honorarios";
+            // 
             // colId
             // 
             colId.HeaderText = "Id";
@@ -171,18 +186,21 @@
             // 
             // colDependencia
             // 
+            colDependencia.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             colDependencia.HeaderText = "Dependencia";
             colDependencia.Name = "colDependencia";
             colDependencia.Resizable = DataGridViewTriState.True;
             colDependencia.SortMode = DataGridViewColumnSortMode.Automatic;
+            colDependencia.Width = 101;
             // 
             // colTipoContrato
             // 
+            colTipoContrato.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             colTipoContrato.HeaderText = "Tipo de contrato";
             colTipoContrato.Name = "colTipoContrato";
             colTipoContrato.Resizable = DataGridViewTriState.True;
             colTipoContrato.SortMode = DataGridViewColumnSortMode.Automatic;
-            colTipoContrato.Width = 150;
+            colTipoContrato.Width = 110;
             // 
             // colNroBoleta
             // 
@@ -191,21 +209,33 @@
             // 
             // colMntBruto
             // 
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "C0";
+            colMntBruto.DefaultCellStyle = dataGridViewCellStyle1;
             colMntBruto.HeaderText = "Monto Bruto";
             colMntBruto.Name = "colMntBruto";
             // 
             // colMntRetencion
             // 
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "C0";
+            colMntRetencion.DefaultCellStyle = dataGridViewCellStyle2;
             colMntRetencion.HeaderText = "Rentención";
             colMntRetencion.Name = "colMntRetencion";
             // 
             // colMntDescuento
             // 
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "C0";
+            colMntDescuento.DefaultCellStyle = dataGridViewCellStyle3;
             colMntDescuento.HeaderText = "Descuentos";
             colMntDescuento.Name = "colMntDescuento";
             // 
             // colMntLiquido
             // 
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "C0";
+            colMntLiquido.DefaultCellStyle = dataGridViewCellStyle4;
             colMntLiquido.HeaderText = "Monto Liquido";
             colMntLiquido.Name = "colMntLiquido";
             colMntLiquido.ReadOnly = true;
@@ -231,16 +261,6 @@
             colJornada.HeaderText = "Jornada";
             colJornada.Name = "colJornada";
             colJornada.ReadOnly = true;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Variable Text Semibold", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(18, 130);
-            label5.Name = "label5";
-            label5.Size = new Size(78, 19);
-            label5.TabIndex = 15;
-            label5.Text = "Honorarios";
             // 
             // frmMntBoleta
             // 

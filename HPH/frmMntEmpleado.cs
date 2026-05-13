@@ -183,26 +183,108 @@ namespace HPH
                 txt.Text = string.Format("{0}-{1}", sRut, sDig);
             }
             txtRut.Select(txtRut.Text.Length, 0);
-            
+
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
 
-            if(!ValicionesFormulario())
+            if (!ValicionesFormulario())
             {
                 MessageBox.Show("Debe completar todos los campos obligatorios.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            try
+            {
+                EmpleadoService empleadoService = new EmpleadoService();
+
+                // Extraer RUT y DV del texto
+                var partes = txtRut.Text.Split('-');
+                if (partes.Length != 2)
+                {
+                    MessageBox.Show("Formato de RUT inválido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int rut = int.Parse(partes[0]);
+                string dv = partes[1];
+
+                Empleado empleado = new Empleado
+                {
+                    Rut = rut,
+                    Dv = dv,
+                    NombreCompleto = txtNombre.Text.Trim(),
+                    CodigoCargo = (int)cmbCargo.SelectedValue
+                };
+
+                bool resultado;
+                string mensaje;
+
+                // Verificar si el empleado ya existe para decidir si insertar o actualizar
+                var empleadoExistente = empleadoService.Obtener(rut, dv[0]);
+
+                if (empleadoExistente != null)
+                {
+                    // Actualizar
+                    resultado = empleadoService.ActualizarEmpleado(empleado);
+                    mensaje = resultado ? "Empleado actualizado correctamente." : "No se pudo actualizar el empleado.";
+                }
+                else
+                {
+                    // Insertar
+                    resultado = empleadoService.GrabarEmpleado(empleado);
+                    mensaje = resultado ? "Empleado guardado correctamente." : "No se pudo guardar el empleado.";
+                }
+
+                if (resultado)
+                {
+                    MessageBox.Show(mensaje, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimpiarFormulario();
+                }
+                else
+                {
+                    MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al procesar el empleado: {ex.Message}", 
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LimpiarFormulario()
+        {
+            txtRut.Text = string.Empty;
+            txtNombre.Text = string.Empty;
+            cmbCargo.SelectedIndex = -1;
+
+            txtRut.Enabled = true;
+            txtNombre.Enabled = false;
+            cmbCargo.Enabled = false;
+
+            txtRut.Focus();
         }
 
         private bool ValicionesFormulario()
         {
-            var gui = Guid.NewGuid().ToString();
-            bool lflag = false;
-            return ((string.IsNullOrWhiteSpace(txtRut.Text) || string.IsNullOrWhiteSpace(txtNombre.Text) || cmbCargo.SelectedIndex == -1) ? false: true);
-            
+            return !string.IsNullOrWhiteSpace(txtRut.Text) 
+                && !string.IsNullOrWhiteSpace(txtNombre.Text) 
+                && cmbCargo.SelectedIndex != -1;
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            frmBuscarEmpleado frm = new frmBuscarEmpleado();
+
+            if (frm.ShowDialog(this) == DialogResult.OK && frm.EmpleadoSeleccionado != null)
+            {
+                var empleado = frm.EmpleadoSeleccionado;
+                txtRut.Text = $"{empleado.Rut}-{empleado.Dv}";
+                txtRut.Enabled = false;
+                HabilitarIngreso(empleado);
+            }
         }
     }
 }

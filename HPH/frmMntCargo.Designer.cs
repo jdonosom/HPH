@@ -83,6 +83,7 @@
             btnHelp.TabIndex = 11;
             btnHelp.Text = "?";
             btnHelp.UseVisualStyleBackColor = true;
+            btnHelp.Click += btnHelp_Click;
             // 
             // btnCancelar
             // 

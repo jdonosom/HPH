@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace HPHBusiness.Model;
 
-public class Cargo
+public class Dependencia
 {
-    public int IdCargo { get; set; }
+    public int IdDependencia { get; set; }
     public string Descripcion { get; set; } = string.Empty;
     public bool Estado { get; set; }
-
-    // Propiedad calculada para mostrar ID y descripción
-    public string CargoCompleto => $"{IdCargo:000} - {Descripcion}";
 }
