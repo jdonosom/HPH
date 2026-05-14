@@ -1,4 +1,5 @@
 ﻿using HPH.Helper;
+using HPHBusiness.Service;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,38 @@ namespace HPH
 
             this.IsMdiContainer = true;
 
+            // Cargar período actual
+            ActualizarPeriodoActual();
+        }
+
+        /// <summary>
+        /// Actualiza el label del período actual en la ventana principal
+        /// </summary>
+        public void ActualizarPeriodoActual()
+        {
+            try
+            {
+                ProcesoService procesoService = new ProcesoService();
+                var periodoActual = procesoService.ObtenerPeriodoActual();
+
+                if (periodoActual != null)
+                {
+                    lblPeriodo.Text = periodoActual.PeriodoFormateado;
+                    lblPeriodo.ForeColor = Color.Green;
+                }
+                else
+                {
+                    lblPeriodo.Text = "Sin período";
+                    lblPeriodo.ForeColor = Color.Red;
+                }
+            }
+            catch (Exception ex)
+            {
+                lblPeriodo.Text = "Error";
+                lblPeriodo.ForeColor = Color.Red;
+                // Log the error but don't show message box to avoid blocking app start
+                Console.WriteLine($"Error al cargar período actual: {ex.Message}");
+            }
         }
 
 
@@ -42,7 +75,7 @@ namespace HPH
             bool isDark = ThemeHelper.IsDarkMode();
 
             // Aplicar íconos a botones
-            btnFuncionarios.Image = isDark ? iconDark : iconLight;
+            //btnFuncionarios.Image = isDark ? iconDark : iconLight;
 
             // Opcional: Cambiar colores del formulario
             if (isDark)
@@ -98,6 +131,38 @@ namespace HPH
         private void ingresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmMntBoleta frm = new frmMntBoleta();
+            frm.MdiParent = this;
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.Show();
+        }
+
+        private void valorHoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMntValorHora frm = new frmMntValorHora();
+            frm.MdiParent = this;
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.Show();
+        }
+
+        private void asignaciónHorasPorCargoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAsignacionHorasCargo frm = new frmAsignacionHorasCargo();
+            frm.MdiParent = this;
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.Show();
+        }
+
+        private void dependenciaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMntDependencia frm = new frmMntDependencia();
+            frm.MdiParent = this;
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.Show();
+        }
+
+        private void periodoDeProcesoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMntPeriodo frm = new frmMntPeriodo();
             frm.MdiParent = this;
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.Show();

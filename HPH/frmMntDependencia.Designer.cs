@@ -33,16 +33,15 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             label4 = new Label();
-            txtRut = new TextBox();
-            textBox1 = new TextBox();
+            txtIdDependencia = new TextBox();
+            txtDescripcion = new TextBox();
             label2 = new Label();
-            dataGridView1 = new DataGridView();
-            colDependencia = new DataGridViewTextBoxColumn();
-            colDescripcion = new DataGridViewTextBoxColumn();
-            button1 = new Button();
+            btnHelp = new Button();
+            chkActivo = new CheckBox();
+            btnAceptar = new Button();
+            btnCancelar = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -62,9 +61,9 @@
             label1.Font = new Font("Segoe UI Variable Display", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(60, 16);
             label1.Name = "label1";
-            label1.Size = new Size(262, 26);
+            label1.Size = new Size(264, 26);
             label1.TabIndex = 1;
-            label1.Text = "Mantenedor de dependencias";
+            label1.Text = "Mantenedor de Dependencias";
             // 
             // pictureBox1
             // 
@@ -81,92 +80,103 @@
             label4.AutoSize = true;
             label4.Location = new Point(12, 75);
             label4.Name = "label4";
-            label4.Size = new Size(89, 15);
+            label4.Size = new Size(17, 15);
             label4.TabIndex = 2;
-            label4.Text = "Id Dependencia";
+            label4.Text = "Id";
             // 
-            // txtRut
+            // txtIdDependencia
             // 
-            txtRut.Location = new Point(12, 93);
-            txtRut.MaxLength = 2;
-            txtRut.Name = "txtRut";
-            txtRut.Size = new Size(59, 23);
-            txtRut.TabIndex = 1;
+            txtIdDependencia.Location = new Point(12, 93);
+            txtIdDependencia.MaxLength = 5;
+            txtIdDependencia.Name = "txtIdDependencia";
+            txtIdDependencia.Size = new Size(59, 23);
+            txtIdDependencia.TabIndex = 0;
+            txtIdDependencia.Leave += txtIdDependencia_Leave;
             // 
-            // textBox1
+            // txtDescripcion
             // 
-            textBox1.Location = new Point(118, 93);
-            textBox1.MaxLength = 11;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(309, 23);
-            textBox1.TabIndex = 3;
+            txtDescripcion.Enabled = false;
+            txtDescripcion.Location = new Point(12, 141);
+            txtDescripcion.MaxLength = 200;
+            txtDescripcion.Name = "txtDescripcion";
+            txtDescripcion.Size = new Size(415, 23);
+            txtDescripcion.TabIndex = 2;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(118, 75);
+            label2.Location = new Point(12, 123);
             label2.Name = "label2";
             label2.Size = new Size(69, 15);
             label2.TabIndex = 2;
             label2.Text = "Descripción";
             // 
-            // dataGridView1
+            // btnHelp
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colDependencia, colDescripcion });
-            dataGridView1.Location = new Point(12, 134);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(415, 249);
-            dataGridView1.TabIndex = 4;
+            btnHelp.Location = new Point(74, 93);
+            btnHelp.Name = "btnHelp";
+            btnHelp.Size = new Size(38, 23);
+            btnHelp.TabIndex = 1;
+            btnHelp.Text = "?";
+            btnHelp.UseVisualStyleBackColor = true;
+            btnHelp.Click += btnHelp_Click;
             // 
-            // colDependencia
+            // chkActivo
             // 
-            colDependencia.HeaderText = "Id";
-            colDependencia.Name = "colDependencia";
-            colDependencia.ReadOnly = true;
+            chkActivo.AutoSize = true;
+            chkActivo.Enabled = false;
+            chkActivo.Location = new Point(12, 180);
+            chkActivo.Name = "chkActivo";
+            chkActivo.Size = new Size(60, 19);
+            chkActivo.TabIndex = 3;
+            chkActivo.Text = "Activo";
+            chkActivo.UseVisualStyleBackColor = true;
             // 
-            // colDescripcion
+            // btnAceptar
             // 
-            colDescripcion.HeaderText = "Descripción";
-            colDescripcion.Name = "colDescripcion";
-            colDescripcion.ReadOnly = true;
-            colDescripcion.Width = 290;
+            btnAceptar.Location = new Point(227, 209);
+            btnAceptar.Name = "btnAceptar";
+            btnAceptar.Size = new Size(97, 34);
+            btnAceptar.TabIndex = 4;
+            btnAceptar.Text = "Aceptar";
+            btnAceptar.UseVisualStyleBackColor = true;
+            btnAceptar.Click += btnAceptar_Click;
             // 
-            // button1
+            // btnCancelar
             // 
-            button1.Location = new Point(74, 93);
-            button1.Name = "button1";
-            button1.Size = new Size(38, 23);
-            button1.TabIndex = 2;
-            button1.Text = "?";
-            button1.UseVisualStyleBackColor = true;
+            btnCancelar.Location = new Point(330, 209);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(97, 34);
+            btnCancelar.TabIndex = 5;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // frmMntDependencia
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(439, 395);
-            Controls.Add(button1);
-            Controls.Add(dataGridView1);
+            ClientSize = new Size(439, 255);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnAceptar);
+            Controls.Add(chkActivo);
+            Controls.Add(btnHelp);
             Controls.Add(label2);
             Controls.Add(label4);
-            Controls.Add(textBox1);
-            Controls.Add(txtRut);
+            Controls.Add(txtDescripcion);
+            Controls.Add(txtIdDependencia);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "frmMntDependencia";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Mantenedor de Dependencias";
+            Load += frmMntDependencia_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -177,12 +187,12 @@
         private Label label1;
         private PictureBox pictureBox1;
         private Label label4;
-        private TextBox txtRut;
-        private TextBox textBox1;
+        private TextBox txtIdDependencia;
+        private TextBox txtDescripcion;
         private Label label2;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn colDependencia;
-        private DataGridViewTextBoxColumn colDescripcion;
-        private Button button1;
+        private Button btnHelp;
+        private CheckBox chkActivo;
+        private Button btnAceptar;
+        private Button btnCancelar;
     }
 }

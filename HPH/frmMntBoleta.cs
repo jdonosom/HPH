@@ -241,5 +241,21 @@ namespace HPH
             // Validar campos requeridos
             // TODO: Implementar validaciones específicas
         }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            
+            txtRut.Text = string.Empty;
+            txtNombre.Text = string.Empty;
+            cmbCargo.SelectedIndex = -1;
+            txtRut.Enabled = true;
+            txtNombre.Enabled = false;
+            cmbCargo.Enabled=false;
+
+            dataGridView1.Rows.Clear();
+
+            txtRut.Focus();
+
+        }
     }
 }

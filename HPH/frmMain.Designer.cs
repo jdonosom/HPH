@@ -29,14 +29,21 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            btnFuncionarios = new Button();
             panel1 = new Panel();
+            lblPeriodo = new Label();
+            label2 = new Label();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             menuStrip1 = new MenuStrip();
             administraciónToolStripMenuItem = new ToolStripMenuItem();
             funcionariosToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem4 = new ToolStripSeparator();
             cargosToolStripMenuItem = new ToolStripMenuItem();
+            asignaciónHorasPorCargoToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem5 = new ToolStripSeparator();
+            dependenciaToolStripMenuItem = new ToolStripMenuItem();
+            valorHoraToolStripMenuItem = new ToolStripMenuItem();
+            tipoDeContratoToolStripMenuItem = new ToolStripMenuItem();
             cargarDatosToolStripMenuItem = new ToolStripMenuItem();
             nominaDeHonorariosToolStripMenuItem = new ToolStripMenuItem();
             procesoHonorariosToolStripMenuItem = new ToolStripMenuItem();
@@ -48,31 +55,46 @@
             tsPeriodo = new ToolStripStatusLabel();
             toolStripStatusLabel2 = new ToolStripStatusLabel();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
-            dependenciaToolStripMenuItem = new ToolStripMenuItem();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             menuStrip1.SuspendLayout();
             sstPeriodo.SuspendLayout();
             SuspendLayout();
             // 
-            // btnFuncionarios
-            // 
-            btnFuncionarios.Location = new Point(0, 0);
-            btnFuncionarios.Name = "btnFuncionarios";
-            btnFuncionarios.Size = new Size(75, 23);
-            btnFuncionarios.TabIndex = 2;
-            // 
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(lblPeriodo);
+            panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(menuStrip1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 86);
+            panel1.Size = new Size(794, 86);
             panel1.TabIndex = 1;
+            // 
+            // lblPeriodo
+            // 
+            lblPeriodo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblPeriodo.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblPeriodo.Location = new Point(688, 37);
+            lblPeriodo.Name = "lblPeriodo";
+            lblPeriodo.Size = new Size(95, 15);
+            lblPeriodo.TabIndex = 5;
+            lblPeriodo.Text = "0";
+            lblPeriodo.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Location = new Point(688, 16);
+            label2.Name = "label2";
+            label2.Size = new Size(96, 15);
+            label2.TabIndex = 4;
+            label2.Text = "Periodo en curso";
             // 
             // label1
             // 
@@ -102,13 +124,13 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { administraciónToolStripMenuItem, cargarDatosToolStripMenuItem, procesoHonorariosToolStripMenuItem });
             menuStrip1.Location = new Point(6, 55);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(785, 24);
+            menuStrip1.Size = new Size(779, 24);
             menuStrip1.TabIndex = 2;
             menuStrip1.Text = "menuStrip1";
             // 
             // administraciónToolStripMenuItem
             // 
-            administraciónToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { funcionariosToolStripMenuItem, cargosToolStripMenuItem, dependenciaToolStripMenuItem });
+            administraciónToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { funcionariosToolStripMenuItem, toolStripMenuItem4, cargosToolStripMenuItem, asignaciónHorasPorCargoToolStripMenuItem, toolStripMenuItem5, dependenciaToolStripMenuItem, valorHoraToolStripMenuItem, tipoDeContratoToolStripMenuItem });
             administraciónToolStripMenuItem.Name = "administraciónToolStripMenuItem";
             administraciónToolStripMenuItem.Size = new Size(100, 20);
             administraciónToolStripMenuItem.Text = "Administración";
@@ -117,16 +139,53 @@
             // funcionariosToolStripMenuItem
             // 
             funcionariosToolStripMenuItem.Name = "funcionariosToolStripMenuItem";
-            funcionariosToolStripMenuItem.Size = new Size(180, 22);
+            funcionariosToolStripMenuItem.Size = new Size(219, 22);
             funcionariosToolStripMenuItem.Text = "Funcionarios";
             funcionariosToolStripMenuItem.Click += funcionariosToolStripMenuItem_Click;
+            // 
+            // toolStripMenuItem4
+            // 
+            toolStripMenuItem4.Name = "toolStripMenuItem4";
+            toolStripMenuItem4.Size = new Size(216, 6);
             // 
             // cargosToolStripMenuItem
             // 
             cargosToolStripMenuItem.Name = "cargosToolStripMenuItem";
-            cargosToolStripMenuItem.Size = new Size(180, 22);
+            cargosToolStripMenuItem.Size = new Size(219, 22);
             cargosToolStripMenuItem.Text = "Cargos";
             cargosToolStripMenuItem.Click += cargosToolStripMenuItem_Click;
+            // 
+            // asignaciónHorasPorCargoToolStripMenuItem
+            // 
+            asignaciónHorasPorCargoToolStripMenuItem.Name = "asignaciónHorasPorCargoToolStripMenuItem";
+            asignaciónHorasPorCargoToolStripMenuItem.Size = new Size(219, 22);
+            asignaciónHorasPorCargoToolStripMenuItem.Text = "Asignación horas por cargo";
+            asignaciónHorasPorCargoToolStripMenuItem.Click += asignaciónHorasPorCargoToolStripMenuItem_Click;
+            // 
+            // toolStripMenuItem5
+            // 
+            toolStripMenuItem5.Name = "toolStripMenuItem5";
+            toolStripMenuItem5.Size = new Size(216, 6);
+            // 
+            // dependenciaToolStripMenuItem
+            // 
+            dependenciaToolStripMenuItem.Name = "dependenciaToolStripMenuItem";
+            dependenciaToolStripMenuItem.Size = new Size(219, 22);
+            dependenciaToolStripMenuItem.Text = "Dependencia";
+            dependenciaToolStripMenuItem.Click += dependenciaToolStripMenuItem_Click;
+            // 
+            // valorHoraToolStripMenuItem
+            // 
+            valorHoraToolStripMenuItem.Name = "valorHoraToolStripMenuItem";
+            valorHoraToolStripMenuItem.Size = new Size(219, 22);
+            valorHoraToolStripMenuItem.Text = "Valor Hora";
+            valorHoraToolStripMenuItem.Click += valorHoraToolStripMenuItem_Click;
+            // 
+            // tipoDeContratoToolStripMenuItem
+            // 
+            tipoDeContratoToolStripMenuItem.Name = "tipoDeContratoToolStripMenuItem";
+            tipoDeContratoToolStripMenuItem.Size = new Size(219, 22);
+            tipoDeContratoToolStripMenuItem.Text = "Tipo de Contrato";
             // 
             // cargarDatosToolStripMenuItem
             // 
@@ -155,6 +214,7 @@
             periodoDeProcesoToolStripMenuItem.Name = "periodoDeProcesoToolStripMenuItem";
             periodoDeProcesoToolStripMenuItem.Size = new Size(180, 22);
             periodoDeProcesoToolStripMenuItem.Text = "Periodo de proceso";
+            periodoDeProcesoToolStripMenuItem.Click += periodoDeProcesoToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
@@ -177,9 +237,9 @@
             // sstPeriodo
             // 
             sstPeriodo.Items.AddRange(new ToolStripItem[] { tsPeriodo, toolStripStatusLabel2, toolStripStatusLabel1 });
-            sstPeriodo.Location = new Point(0, 428);
+            sstPeriodo.Location = new Point(0, 310);
             sstPeriodo.Name = "sstPeriodo";
-            sstPeriodo.Size = new Size(800, 22);
+            sstPeriodo.Size = new Size(794, 22);
             sstPeriodo.TabIndex = 4;
             sstPeriodo.Text = "statusStrip1";
             // 
@@ -192,7 +252,7 @@
             // toolStripStatusLabel2
             // 
             toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            toolStripStatusLabel2.Size = new Size(681, 17);
+            toolStripStatusLabel2.Size = new Size(675, 17);
             toolStripStatusLabel2.Spring = true;
             // 
             // toolStripStatusLabel1
@@ -201,20 +261,13 @@
             toolStripStatusLabel1.Size = new Size(47, 17);
             toolStripStatusLabel1.Text = "tsFecha";
             // 
-            // dependenciaToolStripMenuItem
-            // 
-            dependenciaToolStripMenuItem.Name = "dependenciaToolStripMenuItem";
-            dependenciaToolStripMenuItem.Size = new Size(180, 22);
-            dependenciaToolStripMenuItem.Text = "Dependencia";
-            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(794, 332);
             Controls.Add(sstPeriodo);
             Controls.Add(panel1);
-            Controls.Add(btnFuncionarios);
             Icon = (Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
@@ -235,8 +288,6 @@
         }
 
         #endregion
-
-        private Button btnFuncionarios;
         private Panel panel1;
         private Label label1;
         private PictureBox pictureBox1;
@@ -256,5 +307,12 @@
         private ToolStripStatusLabel toolStripStatusLabel2;
         private ToolStripStatusLabel toolStripStatusLabel1;
         private ToolStripMenuItem dependenciaToolStripMenuItem;
+        private ToolStripMenuItem valorHoraToolStripMenuItem;
+        private ToolStripMenuItem tipoDeContratoToolStripMenuItem;
+        private ToolStripSeparator toolStripMenuItem4;
+        private ToolStripMenuItem asignaciónHorasPorCargoToolStripMenuItem;
+        private ToolStripSeparator toolStripMenuItem5;
+        private Label lblPeriodo;
+        private Label label2;
     }
 }

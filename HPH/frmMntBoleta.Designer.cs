@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMntBoleta));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             btnHelp = new Button();
             cmbCargo = new ComboBox();
             txtNombre = new TextBox();
@@ -44,7 +44,6 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             dataGridView1 = new DataGridView();
-            label5 = new Label();
             colId = new DataGridViewTextBoxColumn();
             colDependencia = new DataGridViewComboBoxColumn();
             colTipoContrato = new DataGridViewComboBoxColumn();
@@ -57,6 +56,8 @@
             colPeriodo = new DataGridViewTextBoxColumn();
             colDecreto = new DataGridViewTextBoxColumn();
             colJornada = new DataGridViewTextBoxColumn();
+            label5 = new Label();
+            btnLimpiar = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -158,24 +159,17 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colId, colDependencia, colTipoContrato, colNroBoleta, colMntBruto, colMntRetencion, colMntDescuento, colMntLiquido, colTipo, colPeriodo, colDecreto, colJornada });
             dataGridView1.Location = new Point(18, 157);
+            dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Size = new Size(1272, 315);
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(1272, 394);
             dataGridView1.TabIndex = 14;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Variable Text Semibold", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(18, 130);
-            label5.Name = "label5";
-            label5.Size = new Size(78, 19);
-            label5.TabIndex = 15;
-            label5.Text = "Honorarios";
             // 
             // colId
             // 
@@ -209,33 +203,33 @@
             // 
             // colMntBruto
             // 
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "C0";
-            colMntBruto.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "C0";
+            colMntBruto.DefaultCellStyle = dataGridViewCellStyle5;
             colMntBruto.HeaderText = "Monto Bruto";
             colMntBruto.Name = "colMntBruto";
             // 
             // colMntRetencion
             // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "C0";
-            colMntRetencion.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "C0";
+            colMntRetencion.DefaultCellStyle = dataGridViewCellStyle6;
             colMntRetencion.HeaderText = "Rentención";
             colMntRetencion.Name = "colMntRetencion";
             // 
             // colMntDescuento
             // 
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "C0";
-            colMntDescuento.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "C0";
+            colMntDescuento.DefaultCellStyle = dataGridViewCellStyle7;
             colMntDescuento.HeaderText = "Descuentos";
             colMntDescuento.Name = "colMntDescuento";
             // 
             // colMntLiquido
             // 
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "C0";
-            colMntLiquido.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "C0";
+            colMntLiquido.DefaultCellStyle = dataGridViewCellStyle8;
             colMntLiquido.HeaderText = "Monto Liquido";
             colMntLiquido.Name = "colMntLiquido";
             colMntLiquido.ReadOnly = true;
@@ -262,11 +256,32 @@
             colJornada.Name = "colJornada";
             colJornada.ReadOnly = true;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Variable Text Semibold", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(18, 130);
+            label5.Name = "label5";
+            label5.Size = new Size(78, 19);
+            label5.TabIndex = 15;
+            label5.Text = "Honorarios";
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.Location = new Point(1194, 557);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(96, 29);
+            btnLimpiar.TabIndex = 16;
+            btnLimpiar.Text = "&Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += btnLimpiar_Click;
+            // 
             // frmMntBoleta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1309, 497);
+            ClientSize = new Size(1309, 618);
+            Controls.Add(btnLimpiar);
             Controls.Add(label5);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
@@ -313,5 +328,6 @@
         private DataGridViewTextBoxColumn colPeriodo;
         private DataGridViewTextBoxColumn colDecreto;
         private DataGridViewTextBoxColumn colJornada;
+        private Button btnLimpiar;
     }
 }

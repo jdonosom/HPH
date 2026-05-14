@@ -69,7 +69,7 @@ namespace HPH
         {
             if (!ValidarFormulario())
             {
-                MessageBox.Show("Debe completar todos los campos obligatorios.", 
+                MessageBox.Show("Debe completar todos los campos obligatorios.",
                     "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -112,7 +112,7 @@ namespace HPH
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al procesar el cargo: {ex.Message}", 
+                MessageBox.Show($"Error al procesar el cargo: {ex.Message}",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

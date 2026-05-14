@@ -124,3 +124,30 @@ PRINT '========================================='
 PRINT 'Creación de tablas completada'
 PRINT '========================================='
 GO
+
+-- ========================================================
+-- Tabla: ValorHora
+-- Descripción: Catálogo de valores hora por periodo
+-- ========================================================
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ValorHora]') AND type in (N'U'))
+BEGIN
+    CREATE TABLE [dbo].[ValorHora](
+        [Periodo] [char](6) NOT NULL,
+        [IdValorHora] [int] NOT NULL,
+        [Descripcion] [varchar](300) NOT NULL,
+        [ValorHora] [decimal](18, 4) NOT NULL,
+        [Estado] [tinyint] NOT NULL DEFAULT(1),
+        CONSTRAINT [PK4] PRIMARY KEY NONCLUSTERED 
+        (
+            [Periodo] ASC,
+            [IdValorHora] ASC
+        )
+    );
+
+    PRINT 'Tabla ValorHora creada correctamente.';
+END
+ELSE
+BEGIN
+    PRINT 'La tabla ValorHora ya existe.';
+END
+GO
